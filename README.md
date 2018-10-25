@@ -48,9 +48,84 @@ you can create nav menu programmatically by buliding list items then pass it or 
         app:navRadius="10dp"
         />
 ```
-##### you can set the defualt nav item by calling the position
+##### to handle clicks on items you have to options, one by implement OnNavItemClicked listener
+
+```kotlin
+class MainActivity : AppCompatActivity(), OnNavItemClicked {
+
+    override fun onMagentaNavItemClicked(id: Int, position: Int) {
+        when (id) {
+            R.id.home -> {
+                magentaNav.navColor = colour(R.color.colorAccent)
+                toast("Home")
+            }
+            R.id.account -> {
+                magentaNav.navColor = colour(R.color.red)
+                toast("Account")
+            }
+            R.id.friends->{
+                magentaNav.navColor = colour(R.color.amber)
+                toast("Friends")
+            }
+            R.id.about -> {
+                magentaNav.navColor = colour(R.color.indigo)
+                toast("About")
+            }
+        }
+    }
+    ...
+}
+```
+
+##### or by creating To create an object of an anonymous an implement OnNavItemClicked 
+
+```kotlin
+  override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        
+        magentaNav.doOnItemClick(object : OnNavItemClicked {
+            override fun onMagentaNavItemClicked(id: Int, position: Int) {
+                onNavClick(id)
+            }
+        })
+    }
+    
+  fun onNavClick(id: Int) {
+        when (id) {
+            R.id.home -> {
+                magentaNav.navColor = colour(R.color.colorAccent)
+                toast("Home")
+            }
+            R.id.account -> {
+                magentaNav.navColor = colour(R.color.red)
+                toast("Account")
+            }
+            R.id.friends -> {
+                magentaNav.navColor = colour(R.color.amber)
+                toast("Friends")
+            }
+            R.id.about -> {
+                magentaNav.navColor = colour(R.color.indigo)
+                toast("About")
+            }
+        }
+    }
+```
+
+##### also you can create items programatically by calling createNav() function on MagentaNav view and passing mutableList of ItemsModel
+
+```kotlin
+//create mutableList then pass it createNav() to create new items
+val itemsList = mutableListOf<ItemsModel>()
+itemsList.add(ItemsModel("Home", getImage(R.drawable.home_img), 123))
+itemsList.add(ItemsModel("Account",getImage(R.drawable.account),456))
+itemsList.add(ItemsModel("about",getImage(R.drawable.about_info),789))
+magentaNav.createNav(itemsList)
+```
+    
+##### you may want to set the defualt nav item by calling the click on item by position
 
 ```kotlin
   magentaNav.callOnClickNavigation(0)
 ```
-
