@@ -1,14 +1,30 @@
-
 <p align="center"><img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magent-icon.png" width=20%></p>
 <br>
 
 # Magent-Navgation
-
+[![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 ### A stylish material navigation written in Kotlin
 <img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav.gif" width=25%>
 
-### How to use it
-use it as you use any other view...
+# Usage
+
+#### Step 1
+add in your root build.gradle at the end of repositories
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+#### Step 2
+```groovy
+implementation 'com.github.vipafattal:Magent-Navigation:v0.1'
+```
+then use it as you use any other view...
+note this project built using Kotlin `1.2.71` 
 
 ### How To Create Navigation Menu
 you can create nav menu programmatically by buliding list items then pass it or by passing xml menu to createNavBar() function 
@@ -25,7 +41,7 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | navRadius                  | the raduis for every nav element                                      | 8dp           |
 | navElevation               | the elevation for every nav element                                   | 4dp           |
 | onClickItemElevation       | the elevation for element when clicked                                | 6dp           |
-| textSize                   | the text size, default 22sp, note this tag takes float values         | 22sp          |
+| text_size                  | the text size, default 22sp, note this tag takes float values         | 22sp          |
 | textSingleLine             | only one line are allowed for text                                    | false         |
 | boldFont                   | bold type face for text                                               | true          |
 | itemHeight                 | specify height for items in the nav                                   | wrap_content  |
