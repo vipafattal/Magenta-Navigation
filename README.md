@@ -41,7 +41,7 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | navRadius                  | the raduis for every nav element                                      | 8dp           |
 | navElevation               | the elevation for every nav element                                   | 4dp           |
 | onClickItemElevation       | the elevation for element when clicked                                | 6dp           |
-| textSize                   | the text size, default 22sp, note this tag takes float values         | 22sp          |
+| text_size                  | the text size, default 22sp, note this tag takes float values         | 22sp          |
 | textSingleLine             | only one line are allowed for text                                    | false         |
 | boldFont                   | bold type face for text                                               | true          |
 | itemHeight                 | specify height for items in the nav                                   | wrap_content  |
