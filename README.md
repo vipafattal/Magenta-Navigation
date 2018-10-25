@@ -2,11 +2,10 @@
 <br>
 
 # Magent-Navgation
+[![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
 
 ### A stylish material navigation written in Kotlin
 <img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav.gif" width=25%>
-
-[![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
 
 ### How to use it
 #### Step 1
