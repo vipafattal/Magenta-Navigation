@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity(), OnNavItemClicked {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         /*
           In order to set items to navigation bar programmatically.
           prepareNavItems()

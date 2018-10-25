@@ -99,7 +99,7 @@ class MagentaNav : LinearLayout {
         cardNavElevation = ta.getDimension(R.styleable.MagentaNav_navElevation, cardNavElevation)
         onClickElevation = ta.getDimension(R.styleable.MagentaNav_onClickItemElevation, onClickElevation)
 //secondary element
-        navTextSize = ta.getFloat(R.styleable.MagentaNav_textSize, navTextSize)
+        navTextSize = ta.getFloat(R.styleable.MagentaNav_text_size, navTextSize)
         isTextSingleLine = ta.getBoolean(R.styleable.MagentaNav_textSingleLine, isTextSingleLine)
         isBoldFont = ta.getBoolean(R.styleable.MagentaNav_boldFont, isBoldFont)
 
@@ -141,10 +141,11 @@ class MagentaNav : LinearLayout {
             cardNavItem.setOnClickListener {
                 if (!isAnimatingNav) {
                     isAnimatingNav = true
+
                     itemClickListener?.onMagentaNavItemClicked(item.itemID, pos)
-/*
+
                     (context as? OnNavItemClicked)?.onMagentaNavItemClicked(item.itemID, pos)
-*/
+
                     navItemParent.cardBackgroundAnimator(500, navColor, defaultNavColor, accentActiveColor, accentDefaultColor) {
                         isAnimatingNav = false
                         cardViews[pos].cardElevation = onClickElevation

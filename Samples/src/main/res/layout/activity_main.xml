@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
-    tools:context=".MainActivity">
+    android:clipToPadding="false">
 
     <com.magenta.navigation.MagentaNav
         app:onClickItemElevation="14dp"
         android:id="@+id/magentaNav"
         app:scaleImg="1.5"
-        app:textSize="15"
+        app:text_size="15"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:menuRes="@menu/main_menu"
