@@ -13,16 +13,19 @@ you can create nav menu programmatically by buliding list items then pass it or 
 #### note you shouldn't put more then 4 element in the navigation.
 
 ### What Can I Do Xml view
-| Tag                        | usage                                                                                    |
+| Tag                        | Usage                                                                                    |
 | -------------------------- | ---------------------------------------------------------------------------------------- |
 | menuRes                    | used for passing menu to create nav items                                                |
 | navColor                   | the main color for the nav items when pressed or active, default color Magenta           |
 | defaultColorState          | the main color for the nav items when not pressed or not active, default color White     |
 | accentActiveColor          | the secondary color for the nav items when pressed or active, default color White        |
 | accentDefault              | the secondary color for the nav items when not pressed or not active, default color gray |
-| navRadius                  | the raduis for every nav element the default value 8dp |
-| navElevation               | the elevation for every nav element the default value 4dp |
-| onClickItemElevation               | the elevation for element when clicked the default value 6dp|
+| navRadius                  | the raduis for every nav element, default value 8dp |
+| navElevation               | the elevation for every nav element, default value 4dp |
+| onClickItemElevation       | the elevation for element when clicked, default value 6dp|
+| textSize                   | the text size, default 22sp, not this tag takes float values|
+| textSingleLine             | only one line are allowed for text, default false |
+| boldFont                   | bold type face for text, default true |
 
 
 
