@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
 
 <p align="center"><img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magent-icon.png" width=20%></p>
 <br>
@@ -8,6 +9,20 @@
 <img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav.gif" width=25%>
 
 ### How to use it
+#### Step 1
+add it in your root build.gradle at the end of repositories
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+#### Step 2
+```groovy
+implementation 'com.github.vipafattal:Magent-Navigation:Tag'
+```
 use it as you use any other view...
 
 ### How To Create Navigation Menu
