@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(), OnNavItemClicked {
 }
 ```
 
-##### or by creating To create an object of an anonymous an implement OnNavItemClicked 
+##### or by creating an anonymous object and implement OnNavItemClicked
 
 ```kotlin
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,3 +129,4 @@ magentaNav.createNav(itemsList)
 ```kotlin
   magentaNav.callOnClickNavigation(0)
 ```
+##### you're free to make pull request and contribute, happy coding!
