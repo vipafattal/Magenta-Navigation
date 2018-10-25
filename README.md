@@ -124,7 +124,7 @@ itemsList.add(ItemsModel("about",getImage(R.drawable.about_info),789))
 magentaNav.createNav(itemsList)
 ```
     
-##### you may want to set the defualt nav item by calling the click on item by position
+##### you may want to set the defualt nav item, you can do that by giving default position to callOnClickNavigation() function
 
 ```kotlin
   magentaNav.callOnClickNavigation(0)
