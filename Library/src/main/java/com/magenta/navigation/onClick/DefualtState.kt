@@ -1,8 +1,10 @@
 package com.magenta.navigation.onClick
 
+import android.support.design.card.MaterialCardView
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.magenta.navigation.helpers.get
 
@@ -19,7 +21,7 @@ internal fun ViewGroup.loadDefaultActionState(clickedNav: MaterialCardView, defa
 private fun ViewGroup.defaultState(defaultCardElevation: Float, accentDefaultColor: Int, defaultNavColor: Int) {
     val cardView = this[0] as MaterialCardView
     val textView = this[1] as TextView
-    val imgView = cardView[0][0] as ImageView
+    val imgView = (cardView[0] as RelativeLayout)[0] as ImageView
     cardView.cardElevation = defaultCardElevation
     textView.setTextColor(accentDefaultColor)
     imgView.setColorFilter(accentDefaultColor)

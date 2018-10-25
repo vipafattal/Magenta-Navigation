@@ -2,8 +2,8 @@
 <resources>
     <declare-styleable name="MagentaNav">
         <attr name="menuRes" format="integer" />
-        <attr name="defaultColorState" format="color" />
         <attr name="navColor" format="color" />
+        <attr name="defaultColorState" format="color" />
 
         <attr name="accentDefault" format="color"/>
         <attr name="accentActiveColor" format="color"/>
@@ -12,7 +12,7 @@
         <attr name="navElevation" format="dimension"/>
         <attr name="onClickItemElevation" format="dimension" />
 
-        <attr name="text_size" format="float"/>
+        <attr name="textSize" format="float" />
         <attr name="textSingleLine" format="boolean"/>
         <attr name="boldFont" format="boolean"/>
 

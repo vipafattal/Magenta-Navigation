@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.support.annotation.MenuRes
+import android.support.design.card.MaterialCardView
+import android.support.v7.view.menu.MenuBuilder
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
@@ -42,13 +44,15 @@ class MagentaNav : LinearLayout {
 
     var cardNavRadius = screenUtils.dp(8f)
     var cardNavElevation = screenUtils.dp(4f)
-    var onClickElevation = 0f
+    var onClickElevation = screenUtils.dp(6f)
 
-    private var navTextSize = 22f
-    private var itemWidth = 0
-    private var itemHeight = 0
-    private var imgNavScale = 1f
-    private var isBoldFont = true
+    var navTextSize = 22f
+    var itemWidth = LayoutParams.MATCH_PARENT
+    var itemHeight = LayoutParams.WRAP_CONTENT
+    var imgNavScale = 1f
+    var isBoldFont = true
+
+    private var itemClickListener: OnNavItemClicked? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -70,12 +74,13 @@ class MagentaNav : LinearLayout {
         itemBuilder()
     }
 
-    fun attachNewItems(items: MutableList<ItemsModel>) {
+    fun createNav(items: MutableList<ItemsModel>) {
         navItems = items
         itemBuilder()
     }
+    //Navigation
 
-    fun attachNewItems(@MenuRes menuRes: Int) {
+    fun createNav(@MenuRes menuRes: Int) {
         menuBuilder(menuRes)
         itemBuilder()
     }
@@ -92,15 +97,15 @@ class MagentaNav : LinearLayout {
         navColor = ta.getColor(R.styleable.MagentaNav_navColor, navColor)
         cardNavRadius = ta.getDimension(R.styleable.MagentaNav_navRadius, cardNavRadius)
         cardNavElevation = ta.getDimension(R.styleable.MagentaNav_navElevation, cardNavElevation)
-        onClickElevation = ta.getDimension(R.styleable.MagentaNav_onClickItemElevation, cardNavElevation + screenUtils.dp(2f))
-
-        navTextSize = ta.getFloat(R.styleable.MagentaNav_text_size, navTextSize)
+        onClickElevation = ta.getDimension(R.styleable.MagentaNav_onClickItemElevation, onClickElevation)
+//secondary element
+        navTextSize = ta.getFloat(R.styleable.MagentaNav_textSize, navTextSize)
         isTextSingleLine = ta.getBoolean(R.styleable.MagentaNav_textSingleLine, isTextSingleLine)
         isBoldFont = ta.getBoolean(R.styleable.MagentaNav_boldFont, isBoldFont)
 
         imgNavScale = ta.getFloat(R.styleable.MagentaNav_scaleImg, imgNavScale)
-        itemWidth = ta.getDim(R.styleable.MagentaNav_itemWidth, LayoutParams.MATCH_PARENT).toInt()
-        itemHeight = ta.getDim(R.styleable.MagentaNav_itemHeight, LayoutParams.WRAP_CONTENT).toInt()
+        itemWidth = ta.getDim(R.styleable.MagentaNav_itemWidth, itemWidth).toInt()
+        itemHeight = ta.getDim(R.styleable.MagentaNav_itemHeight, itemHeight).toInt()
         ta.recycle()
 
         if (menuRes != 0) menuBuilder(menuRes)
@@ -136,7 +141,10 @@ class MagentaNav : LinearLayout {
             cardNavItem.setOnClickListener {
                 if (!isAnimatingNav) {
                     isAnimatingNav = true
+                    itemClickListener?.onMagentaNavItemClicked(item.itemID, pos)
+/*
                     (context as? OnNavItemClicked)?.onMagentaNavItemClicked(item.itemID, pos)
+*/
                     navItemParent.cardBackgroundAnimator(500, navColor, defaultNavColor, accentActiveColor, accentDefaultColor) {
                         isAnimatingNav = false
                         cardViews[pos].cardElevation = onClickElevation
@@ -191,9 +199,6 @@ class MagentaNav : LinearLayout {
         cardViews[position].callOnClick()
     }
 
-    private fun defaultValue() {
-        onClickElevation
-    }
     private fun LayoutParams.defaultMargin(): LayoutParams {
         this.setMargins(screenUtils.dp(10f).toInt(), screenUtils.dp(10f).toInt(), screenUtils.dp(10f).toInt(), 0)
         return this
@@ -204,7 +209,9 @@ class MagentaNav : LinearLayout {
         get() = screenUtils.pixelsToSp(textSize)
         set(value) = setTextSize(TypedValue.COMPLEX_UNIT_SP, value)
 
-
+    fun doOnItemClick(listener: OnNavItemClicked) {
+        itemClickListener = listener
+    }
 }
 
 
