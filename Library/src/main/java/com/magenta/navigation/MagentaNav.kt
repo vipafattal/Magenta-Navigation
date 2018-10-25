@@ -6,8 +6,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.support.annotation.MenuRes
-import android.support.design.card.MaterialCardView
-import android.support.v7.view.menu.MenuBuilder
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
@@ -43,7 +41,9 @@ class MagentaNav : LinearLayout {
     private val textNavParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).defaultMargin()
 
     var cardNavRadius = screenUtils.dp(8f)
-    var cardNavElevation = screenUtils.dp(2f)
+    var cardNavElevation = screenUtils.dp(4f)
+    var onClickElevation = 0f
+
     private var navTextSize = 22f
     private var itemWidth = 0
     private var itemHeight = 0
@@ -92,10 +92,11 @@ class MagentaNav : LinearLayout {
         navColor = ta.getColor(R.styleable.MagentaNav_navColor, navColor)
         cardNavRadius = ta.getDimension(R.styleable.MagentaNav_navRadius, cardNavRadius)
         cardNavElevation = ta.getDimension(R.styleable.MagentaNav_navElevation, cardNavElevation)
+        onClickElevation = ta.getDimension(R.styleable.MagentaNav_onClickItemElevation, cardNavElevation + screenUtils.dp(2f))
 
         navTextSize = ta.getFloat(R.styleable.MagentaNav_text_size, navTextSize)
         isTextSingleLine = ta.getBoolean(R.styleable.MagentaNav_textSingleLine, isTextSingleLine)
-        isBoldFont = ta.getBoolean(R.styleable.MagentaNav_boldFont,isBoldFont)
+        isBoldFont = ta.getBoolean(R.styleable.MagentaNav_boldFont, isBoldFont)
 
         imgNavScale = ta.getFloat(R.styleable.MagentaNav_scaleImg, imgNavScale)
         itemWidth = ta.getDim(R.styleable.MagentaNav_itemWidth, LayoutParams.MATCH_PARENT).toInt()
@@ -118,7 +119,6 @@ class MagentaNav : LinearLayout {
     }
 
     private fun itemBuilder() {
-
         val parenItemParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, itemHeight, 1f).defaultMargin()
         cardNavParams = LinearLayout.LayoutParams(itemWidth, LayoutParams.WRAP_CONTENT, 1f).defaultMargin()
         for (pos in 0 until navItems.size) {
@@ -139,8 +139,9 @@ class MagentaNav : LinearLayout {
                     (context as? OnNavItemClicked)?.onMagentaNavItemClicked(item.itemID, pos)
                     navItemParent.cardBackgroundAnimator(500, navColor, defaultNavColor, accentActiveColor, accentDefaultColor) {
                         isAnimatingNav = false
+                        cardViews[pos].cardElevation = onClickElevation
                     }
-                    this@MagentaNav.loadDefaultActionState(cardNavItem, accentDefaultColor, defaultNavColor)
+                    this@MagentaNav.loadDefaultActionState(cardNavItem, cardNavElevation, accentDefaultColor, defaultNavColor)
                 }
             }
 
@@ -182,14 +183,17 @@ class MagentaNav : LinearLayout {
         text = title
 
         if (isBoldFont)
-        typeface = Typeface.DEFAULT_BOLD
+            typeface = Typeface.DEFAULT_BOLD
 
     }
 
-    fun callOnClickMagentaNav(position: Int) {
+    fun callOnClickNavigation(position: Int) {
         cardViews[position].callOnClick()
     }
 
+    private fun defaultValue() {
+        onClickElevation
+    }
     private fun LayoutParams.defaultMargin(): LayoutParams {
         this.setMargins(screenUtils.dp(10f).toInt(), screenUtils.dp(10f).toInt(), screenUtils.dp(10f).toInt(), 0)
         return this

@@ -10,6 +10,7 @@
 
         <attr name="navRadius" format="dimension"/>
         <attr name="navElevation" format="dimension"/>
+        <attr name="onClickItemElevation" format="dimension" />
 
         <attr name="text_size" format="float"/>
         <attr name="textSingleLine" format="boolean"/>

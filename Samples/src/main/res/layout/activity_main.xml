@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <com.magenta.navigation.MagentaNav
+        app:onClickItemElevation="14dp"
         android:id="@+id/magentaNav"
         app:scaleImg="1.5"
         app:text_size="15"

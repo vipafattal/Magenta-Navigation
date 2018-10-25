@@ -7,6 +7,10 @@
         android:icon="@drawable/home_img"
         android:title="Home" />
     <item
+        android:id="@+id/friends"
+        android:icon="@drawable/friends_img"
+        android:title="Friends" />
+    <item
         android:id="@+id/account"
         android:icon="@drawable/account"
         android:title="Account" />
@@ -14,8 +18,4 @@
         android:id="@+id/about"
         android:icon="@drawable/about_info"
         android:title="About" />
-    <item
-        android:id="@+id/friends"
-        android:icon="@drawable/friends_img"
-        android:title="Friends"/>
 </menu>
