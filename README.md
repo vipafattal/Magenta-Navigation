@@ -7,7 +7,8 @@
 ### A stylish material navigation written in Kotlin
 <img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav.gif" width=25%>
 
-### How to use it
+# Usage
+
 #### Step 1
 add in your root build.gradle at the end of repositories
 ```groovy
