@@ -20,6 +20,7 @@ allprojects {
 	}
 ```
 #### Step 2
+add the dependency
 ```groovy
 implementation 'com.github.vipafattal:Magent-Navigation:v0.1.1'
 ```
