@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(), OnNavItemClicked {
 }
 ```
 
-##### 2. by creating an anonymous object and implement OnNavItemClicked
+##### 2.by creating an anonymous object and implement OnNavItemClicked
 
 ```kotlin
   override fun onCreate(savedInstanceState: Bundle?) {
