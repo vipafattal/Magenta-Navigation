@@ -46,8 +46,8 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | text_size                  | the text size, default 22sp, note this tag takes float values         | 22sp          |
 | textSingleLine             | only one line are allowed for text                                    | false         |
 | boldFont                   | bold type face for text                                               | true          |
-| itemHeight                 | specify height for items in the nav                                   | wrap_content  |
-| itemWidth                  | specify width for items in the nav                                    | match_parent  |
+| itemHeight                 | specify the height for items in the nav                               | wrap_content  |
+| itemWidth                  | specify the width for items in the nav                                | match_parent  |
 | scaleImg                   | this will modify img scale in every item                              | 1f            |
  
  
