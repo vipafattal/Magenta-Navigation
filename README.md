@@ -21,7 +21,7 @@ allprojects {
 ```
 #### Step 2
 ```groovy
-implementation 'com.github.vipafattal:Magent-Navigation:v0.1'
+implementation 'com.github.vipafattal:Magent-Navigation:v0.1.1'
 ```
 then use it as you use any other view...
 note this project built using Kotlin `1.2.71` 
