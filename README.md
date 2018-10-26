@@ -29,6 +29,8 @@ note this project built using Kotlin `1.2.71`
 
 ### How To Create Navigation Menu
 you can create nav menu programmatically by buliding list items then pass it or by passing xml menu to createNavBar() function 
+#### Note you shouldn't put more than 4 elements in the navigation.
+
 
 ### What Can I Do
 | Tag                        | Usage                                                                 | default value |
@@ -49,8 +51,6 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | scaleImg                   | this will modify img scale in every item                              | 1f            |
  
  
-#### Note you shouldn't put more than 4 elements in the navigation.
-
 #### Example :
 ```xml
   <com.magenta.navigation.MagentaNav
