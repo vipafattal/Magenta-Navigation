@@ -49,7 +49,7 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | scaleImg                   | this will modify img scale in every item                              | 1f            |
  
  
-#### note you shouldn't put more than 4 elements in the navigation.
+#### Note you shouldn't put more than 4 elements in the navigation.
 
 #### Example :
 ```xml
