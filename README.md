@@ -29,7 +29,6 @@ note this project built using Kotlin `1.2.71`
 
 ### How To Create Navigation Menu
 you can create nav menu programmatically by buliding list items then pass it or by passing xml menu to createNavBar() function 
-#### note you shouldn't put more than 4 elements in the navigation.
 
 ### What Can I Do
 | Tag                        | Usage                                                                 | default value |
@@ -47,9 +46,10 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | boldFont                   | bold type face for text                                               | true          |
 | itemHeight                 | specify height for items in the nav                                   | wrap_content  |
 | itemWidth                  | specify width for items in the nav                                    | match_parent  |
+| scaleImg                   | this will modify img scale in every item                              | 1f            |
  
-
-
+ 
+#### note you shouldn't put more than 4 elements in the navigation.
 
 #### Example :
 ```xml
