@@ -1,7 +1,7 @@
-<p align="center"><img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magent-icon.png" width=20%></p>
+
 <br>
 
-# Magent-Navgation
+# Magent-Navigation
 [![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 ### A stylish material navigation written in Kotlin
@@ -20,20 +20,22 @@ allprojects {
 	}
 ```
 #### Step 2
+add the dependency
 ```groovy
-implementation 'com.github.vipafattal:Magent-Navigation:v0.1'
+implementation 'com.github.vipafattal:Magent-Navigation:v0.1.1'
 ```
 then use it as you use any other view...
 note this project built using Kotlin `1.2.71` 
 
 ### How To Create Navigation Menu
 you can create nav menu programmatically by buliding list items then pass it or by passing xml menu to createNavBar() function 
-#### note you shouldn't put more then 4 element in the navigation.
+#### Note you shouldn't put more than 4 elements in the navigation.
+
 
 ### What Can I Do
 | Tag                        | Usage                                                                 | default value |
 | -------------------------- | --------------------------------------------------------------------- | ------------- |
-| menuRes                    | used for passing menu to create nav items                             | _             |
+| menuRes                    | used for passing xml menu to create nav items                         | _             |
 | navColor                   | the main color for the nav items when pressed or active               | Magenta       |
 | defaultColorState          | the main color for the nav items when not pressed or not active       | White         |
 | accentActiveColor          | the secondary color for the nav items when pressed or active          | White         |
@@ -44,12 +46,11 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | text_size                  | the text size, default 22sp, note this tag takes float values         | 22sp          |
 | textSingleLine             | only one line are allowed for text                                    | false         |
 | boldFont                   | bold type face for text                                               | true          |
-| itemHeight                 | specify height for items in the nav                                   | wrap_content  |
-| itemWidth                  | specify width for items in the nav                                    | match_parent  |
+| itemHeight                 | specify the height for items in the nav                               | wrap_content  |
+| itemWidth                  | specify the width for items in the nav                                | match_parent  |
+| scaleImg                   | this will modify img scale in every item                              | 1f            |
  
-
-
-
+ 
 #### Example :
 ```xml
   <com.magenta.navigation.MagentaNav
@@ -64,7 +65,9 @@ you can create nav menu programmatically by buliding list items then pass it or 
         app:navRadius="10dp"
         />
 ```
-##### to handle clicks on items you have to options, one by implement OnNavItemClicked listener
+##### to handle clicks on items you have two options:
+
+1.by implementing OnNavItemClicked listener
 
 ```kotlin
 class MainActivity : AppCompatActivity(), OnNavItemClicked {
@@ -93,7 +96,7 @@ class MainActivity : AppCompatActivity(), OnNavItemClicked {
 }
 ```
 
-##### or by creating an anonymous object and implement OnNavItemClicked
+##### 2.by creating an anonymous object and implement OnNavItemClicked
 
 ```kotlin
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -146,3 +149,5 @@ magentaNav.createNav(itemsList)
   magentaNav.callOnClickNavigation(0)
 ```
 ##### you're free to make pull request and contribute, happy coding!
+
+<p align="center"><img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magent-icon.png" width=20%></p>
