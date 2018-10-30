@@ -42,8 +42,9 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | accentDefault              | the secondary color for the nav items when not pressed or not active  | Gray          |
 | navRadius                  | the raduis for every nav element                                      | 8dp           |
 | navElevation               | the elevation for every nav element                                   | 4dp           |
+| marginBetweenItems         | the margin between every items                                        | 4dp           |
 | onClickItemElevation       | the elevation for element when clicked                                | 6dp           |
-| text_size                  | the text size, default 22sp, note this tag takes float values         | 22sp          |
+| text_size                  | the text size in every item                                           | 21sp          |
 | textSingleLine             | only one line are allowed for text                                    | false         |
 | boldFont                   | bold type face for text                                               | true          |
 | itemHeight                 | specify the height for items in the nav                               | wrap_content  |
@@ -53,15 +54,17 @@ you can create nav menu programmatically by buliding list items then pass it or 
  
 #### Example :
 ```xml
-  <com.magenta.navigation.MagentaNav
+   <com.magenta.navigation.MagentaNav
         app:onClickItemElevation="14dp"
         android:id="@+id/magentaNav"
         app:scaleImg="1.5"
-        app:textSize="15"
+        app:itemWidth="60dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        app:marginBetweenItems="0dp"
+        app:navElevation="7dp"
         app:menuRes="@menu/main_menu"
-        app:navElevation="10dp"
+        app:text_size="21sp"
         app:navRadius="10dp"
         />
 ```
