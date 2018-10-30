@@ -5,7 +5,7 @@
 [![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 ### A stylish material navigation written in Kotlin
-<img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav.gif" width=25%>
+<img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav0.gif" width=25%>
 
 # Usage
 
