@@ -12,7 +12,8 @@
         <attr name="navElevation" format="dimension"/>
         <attr name="onClickItemElevation" format="dimension" />
 
-        <attr name="text_size" format="float" />
+        <attr name="text_size" format="dimension" />
+        <attr name="marginBetweenItems" format="dimension" />
         <attr name="textSingleLine" format="boolean"/>
         <attr name="boldFont" format="boolean"/>
 

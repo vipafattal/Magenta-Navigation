@@ -5,15 +5,22 @@
     android:layout_height="match_parent"
     android:clipToPadding="false">
 
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp" />
     <com.magenta.navigation.MagentaNav
         app:onClickItemElevation="14dp"
         android:id="@+id/magentaNav"
         app:scaleImg="1.5"
-        app:text_size="15"
+        app:itemWidth="60dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        app:marginBetweenItems="0dp"
+        app:navElevation="7dp"
         app:menuRes="@menu/main_menu"
-        app:navElevation="10dp"
+        app:text_size="21sp"
         app:navRadius="10dp"
         />
 </RelativeLayout>
