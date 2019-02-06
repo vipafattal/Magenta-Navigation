@@ -4,7 +4,7 @@
 # Magent-Navigation
 [![](https://jitpack.io/v/vipafattal/Magent-Navigation.svg)](https://jitpack.io/#vipafattal/Magent-Navigation)
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
-### A stylish material navigation written in Kotlin
+### A stylish material navigation written in Kotlin `1.2.71` 
 <img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magentaNav0.gif" width=25%>
 
 # Usage
@@ -24,9 +24,6 @@ add the dependency
 ```groovy
 implementation 'com.github.vipafattal:Magent-Navigation:v0.1.1'
 ```
-then use it as you use any other view...
-note this project built using Kotlin `1.2.71` 
-
 ### How To Create Navigation Menu
 you can create nav menu programmatically by buliding list items then pass it or by passing xml menu to createNavBar() function 
 
