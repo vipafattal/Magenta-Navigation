@@ -150,5 +150,3 @@ magentaNav.createNav(itemsList)
   magentaNav.callOnClickNavigation(0)
 ```
 ##### you're free to make pull request and contribute, happy coding!
-
-<p align="center"><img src="https://github.com/vipafattal/Magent-Navgation/blob/master/readme/magent-icon.png" width=20%></p>
