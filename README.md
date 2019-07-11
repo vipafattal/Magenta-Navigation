@@ -22,7 +22,7 @@ allprojects {
 #### Step 2
 add the dependency
 ```groovy
-implementation 'com.github.vipafattal:Magent-Navigation:v0.1.1'
+implementation 'com.github.vipafattal:Magent-Navigation:v0.1.2'
 ```
 ### How To Create Navigation Menu
 you can create nav menu programmatically by buliding list items then pass it or by passing xml menu to createNavBar() function 
