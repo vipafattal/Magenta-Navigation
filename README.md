@@ -44,10 +44,13 @@ you can create nav menu programmatically by buliding list items then pass it or 
 | boldFont                   | bold type face for text                                               | true          |
 | itemHeight                 | specify the height for items in the nav                               | wrap_content  |
 | itemWidth                  | specify the width for items in the nav                                | match_parent  |
+| itemMarginTop              | specify the margin top for items in the nav                           | 10dp          |
+| itemMarginBottom           | specify the margin bottom for items in the nav                        | 0dp           |
+| labelOptions               | show lables under items nav items                                     | labele        |
 | scaleImg                   | this will modify img scale in every item                              | 1f            |
  
 ### Limitation
-#### you shouldn't put more than 5 elements in the navigation otherwise you should go to NavigationDrawer.
+#### you shouldn't put more than 5 elements in the navigation otherwise you should use to NavigationDrawer.
 
  
 #### Example :
