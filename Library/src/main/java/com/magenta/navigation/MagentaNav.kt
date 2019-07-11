@@ -17,11 +17,12 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.codebox.kidslab.Framework.ViewAnimators.cardBackgroundAnimator
 import com.codebox.lib.android.utils.screenHelpers.ScreenUtils
+import com.magenta.navigation.helpers.get
 import com.magenta.navigation.helpers.getDim
 import com.magenta.navigation.model.ItemsModel
 import com.magenta.navigation.onClick.OnNavItemClicked
+import com.magenta.navigation.onClick.cardBackgroundAnimator
 import com.magenta.navigation.onClick.loadDefaultActionState
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -39,11 +40,11 @@ class MagentaNav : LinearLayout {
     private var navItems = mutableListOf<ItemsModel>()
     private val cardViews = mutableListOf<MaterialCardView>()
     private var isAnimatingNav = false
-
+    var defaultPosition = 0
     private lateinit var cardNavParams: ViewGroup.LayoutParams
     private val textNavParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).defaultMargin()
 
-    var cardNavRadius = screenUtils.dp(8f)
+    var itemRadius = screenUtils.dp(8f)
     var cardNavElevation = screenUtils.dp(4f)
     var onClickElevation = screenUtils.dp(6f)
     var marginBetweenItems = 4f
@@ -52,8 +53,12 @@ class MagentaNav : LinearLayout {
             field = screenUtils.pixelsToSp(value)
         }
 
+    var labelOption: Int = Constants.Labeled
+
     var itemWidth = LayoutParams.MATCH_PARENT
     var itemHeight = LayoutParams.WRAP_CONTENT
+    var itemMarginTop = 0
+    var itemMarginBottom = 0
     var imgNavScale = 1f
     var isBoldFont = true
 
@@ -101,7 +106,7 @@ class MagentaNav : LinearLayout {
         defaultNavColor = ta.getColor(R.styleable.MagentaNav_defaultColorState, defaultNavColor)
         navColor = ta.getColor(R.styleable.MagentaNav_navColor, navColor)
         marginBetweenItems = ta.getDimension(R.styleable.MagentaNav_marginBetweenItems, marginBetweenItems)
-        cardNavRadius = ta.getDimension(R.styleable.MagentaNav_navRadius, cardNavRadius)
+        itemRadius = ta.getDimension(R.styleable.MagentaNav_navRadius, itemRadius)
         cardNavElevation = ta.getDimension(R.styleable.MagentaNav_navElevation, cardNavElevation)
         onClickElevation = ta.getDimension(R.styleable.MagentaNav_onClickItemElevation, onClickElevation)
         //secondary element
@@ -112,6 +117,12 @@ class MagentaNav : LinearLayout {
         imgNavScale = ta.getFloat(R.styleable.MagentaNav_scaleImg, imgNavScale)
         itemWidth = ta.getDim(R.styleable.MagentaNav_itemWidth, itemWidth).toInt()
         itemHeight = ta.getDim(R.styleable.MagentaNav_itemHeight, itemHeight).toInt()
+        itemMarginBottom = ta.getDimension(R.styleable.MagentaNav_itemMarginBottom, itemMarginBottom.toFloat()).toInt()
+        itemMarginTop = ta.getDimension(R.styleable.MagentaNav_itemMarginTop, itemMarginTop.toFloat()).toInt()
+
+        defaultPosition = ta.getInteger(R.styleable.MagentaNav_defaultItem, defaultPosition)
+
+        labelOption = ta.getInteger(R.styleable.MagentaNav_labelOptions, Constants.Labeled)
         ta.recycle()
 
         if (menuRes != 0) menuBuilder(menuRes)
@@ -132,6 +143,7 @@ class MagentaNav : LinearLayout {
     private fun itemBuilder() {
         val parenItemParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, itemHeight, 1f).defaultMargin()
         cardNavParams = LinearLayout.LayoutParams(itemWidth, LayoutParams.WRAP_CONTENT).defaultMargin().apply {
+            setMargins(leftMargin, itemMarginTop, rightMargin, itemMarginBottom)
             gravity = Gravity.CENTER_HORIZONTAL
         }
         for (pos in 0 until navItems.size) {
@@ -142,7 +154,8 @@ class MagentaNav : LinearLayout {
             val navItemParent = LinearLayout(context).apply {
                 this.orientation = LinearLayout.VERTICAL
                 addView(cardNavItem, cardNavParams)
-                addView(navText(item.title), textNavParams)
+                if (labelOption == Constants.Labeled)
+                    addView(navText(item.title), textNavParams)
                 //  setBackgroundColor(Color.RED)
             }
             addView(navItemParent, parenItemParams)
@@ -155,17 +168,39 @@ class MagentaNav : LinearLayout {
 
                     (context as? OnNavItemClicked)?.onMagentaNavItemClicked(item.itemID, pos)
 
-                    navItemParent.cardBackgroundAnimator(500, navColor, defaultNavColor, accentActiveColor, accentDefaultColor) {
-                        isAnimatingNav = false
-                        cardViews[pos].cardElevation = onClickElevation
-                    }
-                    this@MagentaNav.loadDefaultActionState(cardNavItem, cardNavElevation, accentDefaultColor, defaultNavColor)
+                    animateNavItem(pos)
+
                 }
             }
 
         }
     }
 
+
+    fun animateNavItem(position: Int) {
+
+        val parentItem = this[position] as LinearLayout
+        parentItem.cardBackgroundAnimator(
+                500,
+                navColor,
+                defaultNavColor,
+                accentActiveColor,
+                accentDefaultColor
+        ) {
+            isAnimatingNav = false
+            cardViews[position].cardElevation = onClickElevation
+        }
+        defaultState(position)
+    }
+
+    private fun defaultState(position: Int) {
+        this@MagentaNav.loadDefaultActionState(
+                cardViews[position],
+                cardNavElevation,
+                accentDefaultColor,
+                defaultNavColor
+        )
+    }
 
     private fun getMaxWidth(): Int {
         var maxTextSize = 0f
@@ -181,7 +216,7 @@ class MagentaNav : LinearLayout {
     private fun navCard(childImg: Drawable) = MaterialCardView(context).apply {
         this.setCardBackgroundColor(defaultNavColor)
         this.layoutParams = cardNavParams
-        this.radius = cardNavRadius
+        this.radius = itemRadius
         this.cardElevation = cardNavElevation
         this.addView(navImage(childImg))
     }
@@ -222,7 +257,12 @@ class MagentaNav : LinearLayout {
     }
 
     private fun LayoutParams.defaultMargin(): LayoutParams {
-        this.setMargins(marginBetweenItems.roundToInt(), screenUtils.dp(10f).toInt(), marginBetweenItems.roundToInt(), 0)
+        this.setMargins(
+                marginBetweenItems.roundToInt(),
+                screenUtils.dp(10f).toInt(),
+                marginBetweenItems.roundToInt(),
+                0
+        )
         return this
     }
 

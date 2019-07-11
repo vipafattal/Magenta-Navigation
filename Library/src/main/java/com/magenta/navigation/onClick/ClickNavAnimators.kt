@@ -1,8 +1,7 @@
-package com.codebox.kidslab.Framework.ViewAnimators
+package com.magenta.navigation.onClick
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.support.design.card.MaterialCardView
 import android.support.graphics.drawable.ArgbEvaluator
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ import com.magenta.navigation.helpers.unitFun
 internal inline fun ViewGroup.cardBackgroundAnimator(duration: Long, activeNavColor: Int,defaultNavColor:Int, accentActiveColor:Int, accentDefaultColor: Int, crossinline doOnEnd: unitFun) {
     val cardView = this[0] as MaterialCardView
     val imgView = (cardView[0] as RelativeLayout)[0] as ImageView
-    val textView = this[1] as TextView
+    val textView = this[1] as? TextView
 
     val cardViewAnimator = ValueAnimator.ofObject(ArgbEvaluator(),defaultNavColor, activeNavColor)
     cardViewAnimator.duration = duration
@@ -40,7 +39,7 @@ internal inline fun ViewGroup.cardBackgroundAnimator(duration: Long, activeNavCo
     }
 
     textViewAnimator.addUpdateListener {
-        textView.setTextColor(it.animatedValue as Int)
+        textView?.setTextColor(it.animatedValue as Int)
     }
     cardViewAnimator.start()
     imgViewAnimator.start()

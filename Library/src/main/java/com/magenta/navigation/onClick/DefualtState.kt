@@ -20,10 +20,10 @@ internal fun ViewGroup.loadDefaultActionState(clickedNav: MaterialCardView, defa
 
 private fun ViewGroup.defaultState(defaultCardElevation: Float, accentDefaultColor: Int, defaultNavColor: Int) {
     val cardView = this[0] as MaterialCardView
-    val textView = this[1] as TextView
+    val textView = this[1] as? TextView
     val imgView = (cardView[0] as RelativeLayout)[0] as ImageView
     cardView.cardElevation = defaultCardElevation
-    textView.setTextColor(accentDefaultColor)
+    textView?.setTextColor(accentDefaultColor)
     imgView.setColorFilter(accentDefaultColor)
     cardView.setCardBackgroundColor(defaultNavColor)
 }

@@ -14,8 +14,14 @@
         android:id="@+id/account"
         android:icon="@drawable/account"
         android:title="Account" />
+    <!--<item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings_img"
+        android:title="Settings" />-->
+
     <item
         android:id="@+id/about"
         android:icon="@drawable/about_info"
         android:title="About" />
+
 </menu>

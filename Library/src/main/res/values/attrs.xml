@@ -19,6 +19,14 @@
 
         <attr name="itemHeight" format="dimension"/>
         <attr name="itemWidth" format="dimension"/>
+        <attr name="itemRadius" format="dimension" />
+        <attr name="itemMarginBottom" format="dimension" />
+        <attr name="itemMarginTop" format="dimension" />
         <attr name="scaleImg" format="float"/>
+        <attr name="defaultItem" format="integer" />
+        <attr name="labelOptions" format="integer">
+            <flag name="no-label" value="0" />
+            <flag name="labeled" value="1" />
+        </attr>
     </declare-styleable>
 </resources>
